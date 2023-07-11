@@ -8,12 +8,21 @@
     apt:
       update_cache: yes
 
-  - name: install apache2 package
-    apt:
-      name: apache2
-      state: latest
+#  - name: install apache2 package
+#    apt:
+#      name: apache2
+#      state: latest
+#
+#  - name: add php support for apache
+#    apt:
+#      name: libapache2-mod-php
+#      state: latest
 
-  - name: add php support for apache
+  - name: install apache2 and php support
     apt:
-      name: libapache2-mod-php
+      name:
+        - apache2
+        - libapache2-mod-php
       state: latest
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
