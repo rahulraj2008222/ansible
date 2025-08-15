@@ -1,0 +1,10 @@
+all:
+  children:
+    ubuntu:
+      hosts:
+        10.1.100.210:
+        172.50.10.122:
+        172.50.10.200:
+            vars:
+        ansible_user: monitor
+        ansible_port: 22

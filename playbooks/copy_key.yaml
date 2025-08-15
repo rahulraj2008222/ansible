@@ -1,0 +1,12 @@
+- name: "SSH Authorized Key Update"
+  hosts: "{{ selected_hosts }}"
+  remote_user: "{{ ansible_user }}"
+  vars:
+    target_user: 'user_goes_here'
+    new_key: 'key_filename.pub'
+  tasks:
+    - name: Add authorized key from file
+      ansible.posix.authorized_key:
+        user: "{{ target_user }}"
+        state: present
+        key: "{{ lookup('file', vars['new_key']) }}"
