@@ -1,0 +1,28 @@
+---
+- name: Proxmox VM creation
+  hosts: proxmox
+  become: true
+  tasks:
+
+    - name: Check SSH connectivity
+      ping:
+
+    - name: Copy qcow2 file to Proxmox
+      copy:
+        src: /local/path/to/disk.qcow2
+        dest: /var/lib/vz/template/qcow2/disk.qcow2
+        mode: '0644'
+
+    - name: Download create_vm.sh from GitHub
+      get_url:
+        url: "https://raw.githubusercontent.com/YOUR-USERNAME/proxmox-vm-creator/main/create_vm.sh"
+        dest: /root/create_vm.sh
+        mode: '0755'
+
+    - name: Make script executable (in case mode above is skipped)
+      file:
+        path: /root/create_vm.sh
+        mode: '0755'
+
+    - name: Execute the script
+      command: /root/create_vm.sh
