@@ -26,3 +26,6 @@ push the changes to GITHUB:
 git push
 
 Note: Here you will be asked for loginuser and the password, you can h=find the username on your profile or can use the email and for the password you need to create a tocken by going into the seating of the GITHUB acount and chose clasic to give you access to the repo.
+
+to pull the lates changess from the GITHUB:
+git pull
